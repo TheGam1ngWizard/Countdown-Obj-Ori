@@ -9,7 +9,7 @@ public class NumberBag {
 	private List<Integer> smallbag = new ArrayList<Integer>();
 	private List<Integer> bigbag = new ArrayList<Integer>();
 	
-	public void fillNumbers(String bag, Integer numbers) { //closed for modification, not hardset weights- assignable at program run.
+	public void fillNumbers(String bag, ArrayList<Integer> numbers) { //closed for modification, not hardset weights- assignable at program run.
 		if(bag == "small") {
 			smallbag.add(numbers/*set of numbers to be assigned.*/);
 		}
