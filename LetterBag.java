@@ -18,7 +18,7 @@ public class LetterBag {
 		}
 	}
 
-	public int drawNumber(String lettertype) {
+	public int drawLetter(String lettertype) {
 		int upperVowelRange = vowelbag.size();
 		int upperConstRange = constbag.size();
 		Character letter = null;
