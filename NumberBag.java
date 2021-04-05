@@ -11,12 +11,12 @@ public class NumberBag {
 	
 	public void fillNumbers(String bag, ArrayList<Integer> numbers) { //closed for modification, not hardset weights- assignable at program run.
 		if(bag == "small") {
-			smallbag.add(numbers/*set of numbers to be assigned.*/);
+			smallbag.addAll(numbers);
 		}
 		else if(bag == "big") {
-			bigbag.add(numbers);
+			bigbag.addAll(numbers);
 		}
-	} // has bug, only applies single number.
+	}
 
 	public int drawNumber(String bag) {
 		int upperSmallRange = smallbag.size();
