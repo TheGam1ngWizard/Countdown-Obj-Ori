@@ -32,11 +32,13 @@ public class NumberBag {
 	}
 	
 	public int NumberBagSize(String bag) {
+		int bagsize = 0;
 		if(bag == "small") {
-			return smallbag.size();
+			bagsize = smallbag.size();
 		}
 		else if(bag == "big") {
-			return bigbag.size();
+			bagsize = bigbag.size();
 		}
+		return bagsize;
 	}
 }
