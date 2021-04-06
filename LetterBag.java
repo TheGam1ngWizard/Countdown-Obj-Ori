@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class LetterBag {
+public class LetterBag extends bag{
 
 	private List<Character> vowelbag = new ArrayList<Character>();
 	private List<Character> constbag = new ArrayList<Character>();
 	
+	@Override
 	public void fillLetters(String lettertype, ArrayList<Character> letters) { //closed for modification, not hardset weights- assignable at program run.
 		if(lettertype == "vowel") {
 			vowelbag.addAll(letters);
@@ -18,7 +19,7 @@ public class LetterBag {
 		}
 	}
 
-	public int drawLetter(String lettertype) {
+	public Character drawLetter(String lettertype) {
 		int upperVowelRange = vowelbag.size();
 		int upperConstRange = constbag.size();
 		Character letter = null;
@@ -31,7 +32,8 @@ public class LetterBag {
 		return letter;
 	}
 	
-	public int NumberBagSize(String lettertype) {
+	@Override
+	public int BagSize(String lettertype) {
 		int bagsize = 0;
 		if(lettertype == "vowel") {
 			bagsize = vowelbag.size();
