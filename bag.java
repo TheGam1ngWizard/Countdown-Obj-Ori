@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class bag {
 	public void fillLetters(String lettertype, ArrayList<Character> letters) {}
-	public void fillNumbers(String bag, ArrayList<Integer> numbers) {}
+	public void fillNumbers(String bag, List<Integer> numbers) {}
 	
 	public int drawNumber(String bag) {
 		Integer number = null;
