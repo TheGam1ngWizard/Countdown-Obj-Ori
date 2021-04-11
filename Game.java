@@ -1,6 +1,5 @@
 package countdown;
 
-import countdown.NumberBag;
 
 import java.util.ArrayList;
 import java.util.List;
