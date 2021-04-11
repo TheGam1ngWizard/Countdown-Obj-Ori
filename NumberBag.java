@@ -10,7 +10,7 @@ public class NumberBag extends bag{
 	private List<Integer> bigbag = new ArrayList<Integer>();
 	
 	@Override
-	public void fillNumbers(String bag, ArrayList<Integer> numbers) { //closed for modification, not hardset weights- assignable at program run.
+	public void fillNumbers(String bag, List<Integer> numbers) { //closed for modification, not hardset weights- assignable at program run.
 		if(bag == "small") {
 			smallbag.addAll(numbers);
 		}
