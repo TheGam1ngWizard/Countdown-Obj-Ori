@@ -43,4 +43,9 @@ public class NumberBag extends bag{
 		}
 		return bagsize;
 	}
+	
+	public void EmptyBags(String bag) {
+		smallbag.removeAll(smallbag);
+		bigbag.removeAll(bigbag);
+	}
 }

@@ -1,5 +1,6 @@
 package countdown;
 import java.util.ArrayList;
+import java.util.List;
 @SuppressWarnings("null")
 
 public abstract class bag {
@@ -15,4 +16,5 @@ public abstract class bag {
 		return letter;
 	}
 	public abstract int BagSize(String bag);
+	
 }
