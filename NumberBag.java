@@ -19,17 +19,26 @@ public class NumberBag extends bag{
 		}
 	}
 
+
+
 	public int drawNumber(String bag) {
 		int upperSmallRange = smallbag.size();
 		int upperBigRange = bigbag.size();
 		Integer number = null;
 		if(bag == "small") {
 			number = smallbag.get(ThreadLocalRandom.current().nextInt(1, upperSmallRange));
+			smallbag.remove(number);
 			}
-		else if(bag == "big") {
+		if(bag == "big") {
 			number = bigbag.get(ThreadLocalRandom.current().nextInt(1, upperBigRange));
+			bigbag.remove(number);
 		}
 		return number;
+	}
+
+	public void EmptyBags(String bag) {
+		smallbag.removeAll(smallbag);
+		bigbag.removeAll(bigbag);
 	}
 	
 	@Override
@@ -42,10 +51,5 @@ public class NumberBag extends bag{
 			bagsize = bigbag.size();
 		}
 		return bagsize;
-	}
-	
-	public void EmptyBags(String bag) {
-		smallbag.removeAll(smallbag);
-		bigbag.removeAll(bigbag);
 	}
 }
