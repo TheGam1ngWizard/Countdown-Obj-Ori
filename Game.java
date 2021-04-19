@@ -21,6 +21,8 @@ public class Game {
         List<Integer> numberBoard = new ArrayList<Integer>();
         List<Character> letterBoard = new ArrayList<Character>();
 
+        Player you = new Player();
+
         int interval = 30;
         int delay = 1000;
         int period = 30000;
@@ -53,7 +55,7 @@ public class Game {
 
         numberBag2.fillNumbers("big", bigList);
 
-        runNumberRound(numberBoard, numberBag, numberBag2, delay, period, interval);
+        runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
 
     }
 
@@ -69,7 +71,7 @@ public class Game {
         }
     }
 
-    public static void runNumberRound(List<Integer> numBoard, NumberBag small, NumberBag big, int delay, int period, int interval) {
+    public static void runNumberRound(Player you, List<Integer> numBoard, NumberBag small, NumberBag big, int delay, int period, int interval) {
         Scanner in = new Scanner(System.in);
         for (int j = 0; j < 6; j ++) {
             System.out.println("Would you like a SMALL number or a BIG number? (Press 's' for SMALL and 'b' for BIG)");
@@ -91,6 +93,33 @@ public class Game {
         System.out.println("You have 30 seconds to use your chosen numbers to reach the goal number. The time starts...NOW!");
         Time timer = new Time();
         timer.runTimer(30);
+            Integer resultOfOp = null;
+            while (resultOfOp != goalNum) {
+                Integer num1 = in.nextInt();
+                String operation = in.next();
+                Integer num2 = in.nextInt();
+                if (you.isValid(numBoard, num1, resultOfOp) == false || you.isValid(numBoard, num2, resultOfOp) == false) {
+                    System.out.println("That is not a valid number, please try again.");
+                } else {
+                    switch (operation) {
+                        case "+":
+                            resultOfOp = num1 + num2;
+                            break;
+
+                        case "-":
+                            resultOfOp = num1 - num2;
+                            break;
+                        case "/":
+                            resultOfOp = num1 / num2;
+                            break;
+                        case "*":
+                            resultOfOp = num1 * num2;
+                            break;
+                    }
+
+                }
+            }
+
 
     }
     public static void runLetterRound(List<Integer> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {

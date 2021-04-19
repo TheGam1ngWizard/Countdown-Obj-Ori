@@ -14,6 +14,7 @@ public class Time{
         int period = 1000;
         timer = new Timer();
         interval = setInterval;
+
         System.out.print(interval + " ");
         timer.scheduleAtFixedRate(new TimerTask() {
 
