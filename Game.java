@@ -1,7 +1,4 @@
 package countdown;
-
-
-
 import java.util.*;
 import java.util.ArrayList.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,7 +28,7 @@ public class Game {
             smallList.add(i);
         }
 
-        numberWithWeight(2, 5, smallList);
+       numberWithWeight(2, 5, smallList);
        numberWithWeight(5, 4, smallList);
 
 
@@ -82,6 +79,7 @@ public class Game {
                 System.out.println("That is not a choice. Please choose 's' or 'b' for SMALL or BIG.");
                 j--;
             }
+        in.close();
         }
 
 
@@ -95,7 +93,7 @@ public class Game {
     }
     public static void runLetterRound(List<Integer> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {
         Scanner in = new Scanner(System.in);
-        for (int j = 0; j < 6; j ++) {
+        for (int j = 0; j < 9; j ++) {
             System.out.println("Would you like a Constant or a Vowel? (Press 'c' for CONSTANANT and 'v' for VOWEL)");
             char userChoice = in.next().charAt(0);
             if (userChoice == 'c') {
@@ -106,6 +104,7 @@ public class Game {
                 System.out.println("That is not a choice. Please choose 'c' or 'v' for CONSTANANT or VOWEL.");
                 j--;
             }
+        in.close();
         }
 
 
@@ -115,8 +114,4 @@ public class Game {
         timer.runTimer(30);
 
     }
-
-
-
-
 }
