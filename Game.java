@@ -19,6 +19,7 @@ public class Game {
         List<Character> consonantList = new ArrayList<Character>();
 
         List<Integer> numberBoard = new ArrayList<Integer>();
+        List<Character> letterBoard = new ArrayList<Character>();
 
         int interval = 30;
         int delay = 1000;
@@ -83,6 +84,7 @@ public class Game {
             }
         }
 
+
         System.out.println("Your numbers are: " + numBoard.toString());
         int goalNum = ThreadLocalRandom.current().nextInt(101, 999);
         System.out.println("Your goal number is : " + goalNum);
@@ -91,7 +93,28 @@ public class Game {
         timer.runTimer(30);
 
     }
+    public static void runLetterRound(List<Integer> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {
+        Scanner in = new Scanner(System.in);
+        for (int j = 0; j < 6; j ++) {
+            System.out.println("Would you like a Constant or a Vowel? (Press 'c' for CONSTANANT and 'v' for VOWEL)");
+            char userChoice = in.next().charAt(0);
+            if (userChoice == 'c') {
+                letterBoard.add(cons.drawNumber("cons"));
+            } else if (userChoice == 'v') {
+                letterBoard.add(vowel.drawNumber("vowel"));
+            } else {
+                System.out.println("That is not a choice. Please choose 'c' or 'v' for CONSTANANT or VOWEL.");
+                j--;
+            }
+        }
 
+
+        System.out.println("Your letters are: " + letterBoard.toString());
+        System.out.println("You have 30 seconds to use your chosen letters to make the longest word. The time starts...NOW!");
+        Time timer = new Time();
+        timer.runTimer(30);
+
+    }
 
 
 
