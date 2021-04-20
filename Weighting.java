@@ -20,10 +20,10 @@ public class Weighting {
 			e.printStackTrace();
 		}
 		
-		File consFile = new File("constfileweights.txt");
-		Scanner consScanner = null;
+		File constFile = new File("constfileweights.txt");
+		Scanner constScanner = null;
 		try {
-			consScanner = new Scanner(consFile);
+			constScanner = new Scanner(constFile);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class Weighting {
         LetterBag letterBag2 = new LetterBag();
 
         List<Character> vowelList = new ArrayList<Character>();
-        List<Character> consList = new ArrayList<Character>();
+        List<Character> constList = new ArrayList<Character>();
 		
         if(type == "vowel") {
         	while(vowScanner.hasNextLine()) {
@@ -48,15 +48,15 @@ public class Weighting {
         	return letterBag;
         }
 		else if(type == "cons") {
-			while(consScanner.hasNextLine()) {
-				Character cons = consScanner.next().charAt(0);
-				int weight = consScanner.nextInt();
+			while(constScanner.hasNextLine()) {
+				Character cons = constScanner.next().charAt(0);
+				int weight = constScanner.nextInt();
 				for(int i = 0; i < weight; i++) {
-					consList.add(cons);
+					constList.add(cons);
 				}
 			}
-			consScanner.close();
-			letterBag2.fillLetters("const", consList);
+			constScanner.close();
+			letterBag2.fillLetters("const", constList);
 			return letterBag2;
 		}
 		
