@@ -1,6 +1,5 @@
 package countdown;
 import java.util.*;
-import java.util.ArrayList.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {

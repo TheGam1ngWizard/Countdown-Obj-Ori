@@ -1,10 +1,9 @@
 package countdown;
-import java.util.ArrayList;
 import java.util.List;
 @SuppressWarnings("null")
 
 public abstract class bag {
-	public void fillLetters(String lettertype, ArrayList<Character> letters) {}
+	public void fillLetters(String lettertype, List<Character> letters) {}
 	public void fillNumbers(String bag, List<Integer> numbers) {}
 	
 	public int drawNumber(String bag) {

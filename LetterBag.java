@@ -10,7 +10,7 @@ public class LetterBag extends bag{
 	private List<Character> constbag = new ArrayList<Character>();
 	
 	@Override
-	public void fillLetters(String lettertype, ArrayList<Character> letters) { //closed for modification, not hardset weights- assignable at program run.
+	public void fillLetters(String lettertype, List<Character> letters) { //closed for modification, not hardset weights- assignable at program run.
 		if(lettertype == "vowel") {
 			vowelbag.addAll(letters);
 		}
