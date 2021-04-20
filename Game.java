@@ -10,11 +10,7 @@ public class Game {
         LetterBag letterBag = new LetterBag();
         LetterBag letterBag2 = new LetterBag();
 
-        List<Integer> smallList = new ArrayList<Integer>();
-        List<Integer> bigList = new ArrayList<Integer>();
-        List<Character> vowelList = new ArrayList<Character>();
-        List<Character> consonantList = new ArrayList<Character>();
-
+      
         List<Integer> numberBoard = new ArrayList<Integer>();
         List<Character> letterBoard = new ArrayList<Character>();
 
@@ -23,35 +19,12 @@ public class Game {
         int interval = 30;
         int delay = 1000;
         int period = 30000;
-
-        //Fill smallList
-        Integer amount = 10;
-        for (Integer i = 1; i < amount; i++) {
-            smallList.add(i);
-        }
-
-       numberWithWeight(2, 5, smallList);
-       numberWithWeight(5, 4, smallList);
-
-
-        numberBag.fillNumbers("small", smallList);
-
-
-
-
-        //Fill bigList
-        Integer amountBig = 100;
-        for (Integer i = 10; i < amountBig; i++) {
-            bigList.add(i);
-        }
-
-       numberWithWeight(15, 2, bigList);
-       numberWithWeight(10, 3, bigList);
-       numberWithWeight(20, 4, bigList);
-       numberWithWeight(50, 4, bigList);
-
-        numberBag2.fillNumbers("big", bigList);
-
+        
+        letterBag = Weighting.addLetterWeights("const");
+        letterBag2 = Weighting.addLetterWeights("vowel");
+        numberBag = Weighting.addNumberWeights("big");
+        numberBag2 = Weighting.addNumberWeights("small");
+        
         runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
 
     }
