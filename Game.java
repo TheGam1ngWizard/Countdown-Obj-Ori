@@ -25,9 +25,20 @@ public class Game {
         numberBag = Weighting.addNumberWeights("big");
         numberBag2 = Weighting.addNumberWeights("small");
         
-        runNumberRound(you, numberBoard, numberBag2, numberBag, delay, period, interval);
-        runLetterRound(you, letterBoard, letterBag, letterBag2, delay, period, interval);
-
+        System.out.println("Would you like to play a game? (Press 'n' for NUMBER ROUND and 'l' for LETTER ROUND)");
+        Scanner in = new Scanner(System.in);
+        for (int j = 0; j < 1; j ++) {
+        	char userChoice = in.next().charAt(0);
+            if (userChoice == 'n') {
+            	runNumberRound(you, numberBoard, numberBag2, numberBag, delay, period, interval);
+            } else if (userChoice == 'l') {
+            	runLetterRound(you, letterBoard, letterBag2, letterBag, delay, period, interval);
+            } else {
+                System.out.println("That is not a choice. Please choose 'n' or 'l' for NUMBER or LETTER round.");
+            j--;
+            }
+        }
+        in.close();
     }
 
     public static void runNumberRound(Player you, List<Integer> numBoard, NumberBag small, NumberBag big, int delay, int period, int interval) {
@@ -107,21 +118,23 @@ public class Game {
             System.out.println("Would you like a Constant or a Vowel? (Press 'c' for CONSTANANT and 'v' for VOWEL)");
             char userChoice = in.next().charAt(0);
             if (userChoice == 'c') {
-                letterBoard.add(cons.drawLetter("cons"));
+                letterBoard.add(cons.drawLetter("const"));
             } else if (userChoice == 'v') {
                 letterBoard.add(vowel.drawLetter("vowel"));
             } else {
                 System.out.println("That is not a choice. Please choose 'c' or 'v' for CONSTANANT or VOWEL.");
                 j--;
             }
-        in.close();
+        
         }
 
 
         System.out.println("Your letters are: " + letterBoard.toString());
         System.out.println("You have 30 seconds to use your chosen letters to make the longest word. The time starts...NOW!");
-        Time timer = new Time();
-        timer.runTimer(30);
+        //Time timer = new Time();
+        //timer.runTimer(30);
+        in.close();
 
     }
+    
 }

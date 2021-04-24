@@ -47,7 +47,7 @@ public class Weighting {
         	letterBag.fillLetters("vowel", vowelList);
         	return letterBag;
         }
-		else if(type == "cons") {
+		else if(type == "const") {
 			while(constScanner.hasNextLine()) {
 				Character cons = constScanner.next().charAt(0);
 				int weight = constScanner.nextInt();
@@ -62,6 +62,7 @@ public class Weighting {
 		
     return null;
 	}
+	
 	public static NumberBag addNumberWeights(String type) {
 
 		//Initialize the files and make sure they don't throw errors.
