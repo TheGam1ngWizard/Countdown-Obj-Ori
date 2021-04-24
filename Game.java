@@ -25,6 +25,7 @@ public class Game {
         numberBag2 = Weighting.addNumberWeights("small");
         
         runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
+        runLetterRound(you, letterBoard, letterBag, letterBag2, delay, period, interval);
 
     }
 
@@ -92,15 +93,15 @@ public class Game {
 
 
     }
-    public static void runLetterRound(List<Integer> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {
+    public static void runLetterRound(Player you, List<Character> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {
         Scanner in = new Scanner(System.in);
         for (int j = 0; j < 9; j ++) {
             System.out.println("Would you like a Constant or a Vowel? (Press 'c' for CONSTANANT and 'v' for VOWEL)");
             char userChoice = in.next().charAt(0);
             if (userChoice == 'c') {
-                letterBoard.add(cons.drawNumber("cons"));
+                letterBoard.add(cons.drawLetter("cons"));
             } else if (userChoice == 'v') {
-                letterBoard.add(vowel.drawNumber("vowel"));
+                letterBoard.add(vowel.drawLetter("vowel"));
             } else {
                 System.out.println("That is not a choice. Please choose 'c' or 'v' for CONSTANANT or VOWEL.");
                 j--;
