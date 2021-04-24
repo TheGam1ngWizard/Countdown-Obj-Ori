@@ -1,4 +1,5 @@
 package countdown;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,7 +25,7 @@ public class Game {
         numberBag = Weighting.addNumberWeights("big");
         numberBag2 = Weighting.addNumberWeights("small");
         
-        runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
+        runNumberRound(you, numberBoard, numberBag2, numberBag, delay, period, interval);
         runLetterRound(you, letterBoard, letterBag, letterBag2, delay, period, interval);
 
     }
@@ -42,8 +43,9 @@ public class Game {
                 System.out.println("That is not a choice. Please choose 's' or 'b' for SMALL or BIG.");
                 j--;
             }
-        in.close();
+
         }
+
 
 
         System.out.println("Your numbers are: " + numBoard.toString());
@@ -53,7 +55,7 @@ public class Game {
         Time timer = new Time();
         timer.runTimer(30);
             List<Integer> pastResults = new ArrayList<Integer>();
-            Integer resultOfOp = null;
+            Integer resultOfOp = 0;
             while (resultOfOp != goalNum) {
                 Integer num1 = in.nextInt();
                 String operation = in.next();
@@ -83,7 +85,7 @@ public class Game {
 
                 }
             }
-
+        in.close();
 
     }
     public static void runLetterRound(Player you, List<Character> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {
