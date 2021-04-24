@@ -16,11 +16,12 @@ public class Player {
         }
     }
 
-    public boolean isValid(List<Integer> numBoard, Integer num , Integer resultOfOp) {
+    public boolean isValid(List<Integer> numBoard, Integer num , List<Integer> pastResults) {
         boolean validAnswer = false;
         for (int i = 0; i < numBoard.size(); i ++) {
-            if (num == numBoard.get(i) || num == resultOfOp) {
-                return true;
+            if (num == numBoard.get(i) || pastResults.contains(num)) {
+                validAnswer = true;
+                return validAnswer;
             }
         }
         return validAnswer;
