@@ -98,7 +98,7 @@ public class Weighting {
 				}
 			}
 			bigScanner.close();
-			numberBag2.fillNumbers("big", bigList);
+			numberBag.fillNumbers("big", bigList);
 			return numberBag;
 		}
 		else if(type == "small") {
@@ -110,7 +110,7 @@ public class Weighting {
 				}
 			}
 			smallScanner.close();
-			numberBag.fillNumbers("small", smallList);
+			numberBag2.fillNumbers("small", smallList);
 			return numberBag2;
 		}
     return null;

@@ -19,26 +19,14 @@ public class Game {
         int delay = 1000;
         int period = 30000;
         
-        letterBag = Weighting.addLetterWeights("const");
-        letterBag2 = Weighting.addLetterWeights("vowel");
+        letterBag = Weighting.addLetterWeights("vowel");
+        letterBag2 = Weighting.addLetterWeights("const");
         numberBag = Weighting.addNumberWeights("big");
         numberBag2 = Weighting.addNumberWeights("small");
         
         runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
         runLetterRound(you, letterBoard, letterBag, letterBag2, delay, period, interval);
 
-    }
-
-    public static void numberWithWeight(int num, int weight, List<Integer> whichBag) {
-        for (int i = 0; i < weight; i ++) {
-            whichBag.add(num);
-        }
-    }
-
-    public static void letterWithWeight(Character letter, int weight, List<Character> whichBag) {
-        for (int i = 0; i < weight; i ++) {
-            whichBag.add(letter);
-        }
     }
 
     public static void runNumberRound(Player you, List<Integer> numBoard, NumberBag small, NumberBag big, int delay, int period, int interval) {
