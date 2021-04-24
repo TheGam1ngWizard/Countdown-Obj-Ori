@@ -11,7 +11,7 @@ public class Weighting {
 	public static LetterBag addLetterWeights(String type) {
 
 		//Initialize the files and make sure they don't throw errors.
-		File vowFile = new File("vowelfileweights.txt");
+		File vowFile = new File("countdown/vowelfileweights.txt");
 		Scanner vowScanner = null;
 		try {
 			vowScanner = new Scanner(vowFile);
@@ -20,7 +20,7 @@ public class Weighting {
 			e.printStackTrace();
 		}
 		
-		File constFile = new File("constfileweights.txt");
+		File constFile = new File("countdown/constfileweights.txt");
 		Scanner constScanner = null;
 		try {
 			constScanner = new Scanner(constFile);
@@ -65,7 +65,7 @@ public class Weighting {
 	public static NumberBag addNumberWeights(String type) {
 
 		//Initialize the files and make sure they don't throw errors.
-		File bigFile = new File("bigfileweights.txt");
+		File bigFile = new File("countdown/bigfileweights.txt");
 		Scanner bigScanner = null;
 		try {
 			bigScanner = new Scanner(bigFile);
@@ -74,7 +74,7 @@ public class Weighting {
 			e.printStackTrace();
 		}
 		
-		File smallFile = new File("smallfileweights.txt");
+		File smallFile = new File("countdown/smallfileweights.txt");
 		Scanner smallScanner = null;
 		try {
 			smallScanner = new Scanner(smallFile);
@@ -102,7 +102,7 @@ public class Weighting {
 			return numberBag;
 		}
 		else if(type == "small") {
-			while(bigScanner.hasNextLine()) {
+			while(smallScanner.hasNextLine()) {
 				int number = smallScanner.nextInt();
 				int weight = smallScanner.nextInt();
 				for(int i = 0; i < weight; i++) {
