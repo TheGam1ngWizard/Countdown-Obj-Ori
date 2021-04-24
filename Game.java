@@ -52,14 +52,17 @@ public class Game {
         int goalNum = ThreadLocalRandom.current().nextInt(101, 999);
         System.out.println("Your goal number is : " + goalNum);
         System.out.println("You have 30 seconds to use your chosen numbers to reach the goal number. The time starts...NOW!");
-        Time timer = new Time();
-        timer.runTimer(30);
+        //Time timer = new Time();
+        //timer.runTimer(30);
             List<Integer> pastResults = new ArrayList<Integer>();
             Integer resultOfOp = 0;
             while (resultOfOp != goalNum) {
-                Integer num1 = in.nextInt();
-                String operation = in.next();
-                Integer num2 = in.nextInt();
+                try {
+                    Integer num1 = in.nextInt();
+                    String operation = in.next();
+                    Integer num2 = in.nextInt();
+
+
                 if (you.isValid(numBoard, num1, pastResults) == false || you.isValid(numBoard, num2, pastResults) == false) {
                     System.out.println("That is not a valid number, please try again.");
                 } else {
@@ -67,22 +70,32 @@ public class Game {
                         case "+":
                             resultOfOp = num1 + num2;
                             pastResults.add(resultOfOp);
+                            System.out.println("Answer: " + resultOfOp);
                             break;
 
                         case "-":
                             resultOfOp = num1 - num2;
                             pastResults.add(resultOfOp);
+                            System.out.println("Answer: " + resultOfOp);
                             break;
                         case "/":
                             resultOfOp = num1 / num2;
                             pastResults.add(resultOfOp);
+                            System.out.println("Answer: " + resultOfOp);
                             break;
                         case "*":
                             resultOfOp = num1 * num2;
                             pastResults.add(resultOfOp);
+                            System.out.println("Answer: " + resultOfOp);
                             break;
                     }
 
+                }
+                }
+                catch(Exception e){
+                    System.out.println("Error! Input an integer, operation (+ - * /), then integer");
+                    in.reset();
+                    in.next();
                 }
             }
         in.close();
