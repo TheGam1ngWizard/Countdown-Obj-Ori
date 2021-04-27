@@ -12,9 +12,11 @@ public class NumberBag extends bag{
 	@Override
 	public void fillNumbers(String bag, List<Integer> numbers) { //closed for modification, not hardset weights- assignable at program run.
 		if(bag == "small") {
+			smallbag.removeAll(smallbag);
 			smallbag.addAll(numbers);
 		}
 		else if(bag == "big") {
+			bigbag.removeAll(bigbag);
 			bigbag.addAll(numbers);
 		}
 	}
@@ -36,11 +38,11 @@ public class NumberBag extends bag{
 		return number;
 	}
 
-	public void EmptyBags(String bag) {
+	/*public void EmptyBags(String bag) {
 		smallbag.removeAll(smallbag);
 		bigbag.removeAll(bigbag);
 	}
-	
+	*/
 	@Override
 	public int BagSize(String bag) {
 		int bagsize = 0;

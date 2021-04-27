@@ -1,5 +1,8 @@
 package countdown;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -125,7 +128,6 @@ public class Game {
                 System.out.println("That is not a choice. Please choose 'c' or 'v' for CONSTANANT or VOWEL.");
                 j--;
             }
-        
         }
 
 
@@ -133,8 +135,55 @@ public class Game {
         System.out.println("You have 30 seconds to use your chosen letters to make the longest word. The time starts...NOW!");
         //Time timer = new Time();
         //timer.runTimer(30);
+        String userWord = in.next();
+        userWord = userWord.toLowerCase();
+        Boolean realWord = checkword(userWord);
+        
+        ArrayList<Character> checkBag = new ArrayList<>();
+        for(int i = 0; i < userWord.length(); i++) {
+        	checkBag.add(userWord.charAt(i));
+        }
+        
+        if(letterBoard.containsAll(checkBag) == false) {
+        	System.out.println("You either used a letter not drawn, or used a letter twice! No points.");
+        }
+        else if(userWord.length() == 1) {
+        	System.out.println("One letter is too short! Find a longer word next round!");
+        }
+        else if(realWord && userWord.length() == 9) {
+        	System.out.println("You found a word using all nine letters! You gain 18 points to your score!");
+        	//stub Add 18 points to score
+        }
+        else if(realWord) {
+        	System.out.println("You found a word of " + userWord.length() + " long! Adding " + userWord.length() + " points to your score!");
+        	//stub add userWord.length() points to playerscore
+        }
+        else {
+        	System.out.println("That was not a realword, wa waah. No points.");
+        }
+        //stub to next round
+        
         in.close();
-
     }
-    
+    public static Boolean checkword(String word) {
+    	File wordFile = new File("src/countdown/Oxford_full");
+		Scanner wordScanner = null;
+		try {
+			wordScanner = new Scanner(wordFile);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while(wordScanner.hasNextLine()) {
+			String firstWord = wordScanner.next();
+			firstWord = firstWord.toLowerCase();
+			if(firstWord.equals(word)) {
+				return true;
+			}
+			else {
+				wordScanner.nextLine();
+			}
+		}
+    	return false;
+    }
 }

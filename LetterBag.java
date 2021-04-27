@@ -12,9 +12,11 @@ public class LetterBag extends bag{
 	@Override
 	public void fillLetters(String lettertype, List<Character> letters) { //closed for modification, not hardset weights- assignable at program run.
 		if(lettertype == "vowel") {
+			vowelbag.removeAll(vowelbag);
 			vowelbag.addAll(letters);
 		}
 		else if(lettertype == "const") {
+			constbag.removeAll(constbag);
 			constbag.addAll(letters);
 		}
 	}
