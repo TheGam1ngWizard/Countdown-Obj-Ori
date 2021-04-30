@@ -49,6 +49,35 @@ public class Player {
         }
     }
 
+    public int scoreNumRound(Integer finalNumAnswer, Integer expectedNum) {
+        int roundScore = 0;
+        int diff = Math.abs(expectedNum - finalNumAnswer);
+        if(finalAnswer(expectedNum, finalNumAnswer)) {
+            roundScore = 10;
+
+        }
+        else if ((diff <= 5)) {
+            roundScore = 8;
+        }
+        else if (diff <= 10) {
+            roundScore = 5;
+        }
+        else if(diff <= 50) {
+            roundScore = 2;
+        }
+        else {
+            roundScore = 0;
+        }
+
+        currentScore = currentScore + roundScore;
+        return roundScore;
+
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
+    }
+
     public void addWord(String wordToAdd) {
         possibleWords.add(wordToAdd);
     }

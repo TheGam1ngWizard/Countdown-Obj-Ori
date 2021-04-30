@@ -26,6 +26,7 @@ public class Weighting {
 			constScanner = new Scanner(constFile);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+			//System.out.println("THIS ERROR");
 			e.printStackTrace();
 		}
 		
