@@ -1,10 +1,11 @@
 package countdown;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
     private int currentScore;
-    private List<String> possibleWords;
+    private List<String> possibleWords = new ArrayList<>();
     private Integer finalNum;
 
     private String finalWord;
@@ -47,6 +48,20 @@ public class Player {
         else {
             return false;
         }
+    }
+
+    public int scoreWordRound() {
+        int wordScore = 0;
+        int place = 0;
+        for (int i = 0; i < possibleWords.size(); i++) {
+            if (possibleWords.get(i).length() > wordScore) {
+                wordScore = possibleWords.get(i).length();
+                place = i;
+            }
+        }
+        finalWord  = possibleWords.get(place);
+        currentScore = currentScore + wordScore;
+        return wordScore;
     }
 
     public int scoreNumRound(Integer finalNumAnswer, Integer expectedNum) {

@@ -982,7 +982,7 @@ public class Game extends JFrame {
                         }
                         int roundScore = you.scoreNumRound(yourAnswer, goalNum);
                         int currentScore = you.getCurrentScore();
-                        scoreRoundFrame(you, roundScore, currentScore, 1, newString, timeNow);
+                        scoreRoundFrame(you, roundScore, currentScore, 0, newString, timeNow);
 
 
                     }
@@ -1201,47 +1201,83 @@ public class Game extends JFrame {
 
         let1.setText(letters);
 
-        JLabel enterHere = new JLabel("Enter words here: ");
-        enterHere.setBounds(5, 150, 60, 30);
+        JLabel enterHere = new JLabel("Type: ");
+        enterHere.setBounds(2, 150, 60, 30);
         enterHere.setFont(font);
 
         g.add(enterHere);
 
         JTextArea letCurrent = new JTextArea("");
-        letCurrent.setBounds(70, 150, 300, 30);
+        letCurrent.setBounds(80, 150, 170, 30);
         Color color = g.getBackground();
         letCurrent.setBackground(Color.WHITE);
         letCurrent.setForeground(Color.BLUE);
         letCurrent.setFont(font);
 
         JButton submit = new JButton("Add");
-        submit.setBounds(375, 150, 10, 30);
+        submit.setBounds(325, 150, 60, 30);
+
 
         JTextArea error = new JTextArea("");
-        error.setBounds(10, 315, 400, 25);
+        error.setBounds(10, 415, 400, 25);
         error.setForeground(Color.red);
         error.setBackground(color);
 
-        List<JTextArea> answerSlot = new ArrayList<>();
+        //List<JTextArea> answerSlot = new ArrayList<>();
 
-        JTextArea slot1 = new JTextArea();
-        answerSlot.add(slot1);
-        JTextArea slot2 = new JTextArea();
-        answerSlot.add(slot2);
-        JTextArea slot3 = new JTextArea();
-        answerSlot.add(slot3);
-        JTextArea slot4 = new JTextArea();
-        answerSlot.add(slot4);
-        JTextArea slot5 = new JTextArea();
-        answerSlot.add(slot5);
+
         Font it = new Font("Comic Sans", Font.ITALIC, 20);
+        JTextArea slot1 = new JTextArea("-");
+        //answerSlot.add(slot1);
+        slot1.setBounds(10, 205, 200, 30);
+        slot1.setFont(it);
+        slot1.setForeground(Color.GRAY);
+        slot1.setBackground(Color.lightGray);
+        slot1.setVisible(true);
+        //slot1.setText("-");
 
-        for (int i = 0; i < 5; i++) {
+        JTextArea slot2 = new JTextArea();
+       // answerSlot.add(slot2);
+        slot2.setBounds(10, 250, 200, 30);
+        slot2.setFont(it);
+        slot2.setForeground(Color.GRAY);
+        slot2.setBackground(Color.lightGray);
+        slot2.setVisible(true);
+        slot2.setText("-");
+        JTextArea slot3 = new JTextArea();
+        //answerSlot.add(slot3);
+        slot3.setBounds(10, 295, 200, 30);
+        slot3.setFont(it);
+        slot3.setForeground(Color.GRAY);
+        slot3.setBackground(Color.lightGray);
+        slot3.setVisible(true);
+        slot3.setText("-");
+        JTextArea slot4 = new JTextArea();
+        //answerSlot.add(slot4);
+        slot4.setBounds(10, 340, 200, 30);
+        slot4.setFont(it);
+        slot4.setForeground(Color.GRAY);
+        slot4.setBackground(Color.lightGray);
+        slot4.setVisible(true);
+        slot4.setText("-");
+        JTextArea slot5 = new JTextArea();
+        //answerSlot.add(slot5);
+        slot5.setBounds(10, 385, 200, 30);
+        slot5.setFont(it);
+        slot5.setForeground(Color.GRAY);
+        slot5.setBackground(Color.lightGray);
+        slot5.setVisible(true);
+        slot5.setText("-");
 
-            answerSlot.get(i).setBounds(10, (160 + (45 * i)), 200, 20);
-            answerSlot.get(i).setFont(it);
-            answerSlot.get(i).setForeground(Color.GRAY);
-        }
+
+
+        g.add(slot1);
+        g.add(slot2);
+        g.add(slot3);
+        g.add(slot4);
+        g.add(slot5);
+
+
 
 
 
@@ -1253,7 +1289,12 @@ public class Game extends JFrame {
                 //you.addWord();
                 String userWord = letCurrent.getText();
                 userWord = userWord.toLowerCase();
-                Boolean realWord = checkword(userWord);
+                Boolean realWord = null;
+                try {
+                    realWord = checkword(userWord);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 ArrayList<Character> checkBag = new ArrayList<>();
                 for(int i = 0; i < userWord.length(); i++) {
@@ -1267,24 +1308,47 @@ public class Game extends JFrame {
                     error.setText("One letter is too short! Find a longer word next round!");
                 }
                 else if(realWord && userWord.length() == 9) {
+                    you.addWord(userWord);
                     error.setText("You found a word using all nine letters! You gain 18 points to your score!");
                     //stub Add 18 points to score
-                    for(int j = 0; j < answerSlot.size(); j ++) {
-                        if (answerSlot.get(j).getText() == "") {
-                            answerSlot.get(j).setText(userWord + "    " + userWord.length());
-                            j = answerSlot.size();
-                        }
+                    if (slot1.getText() == "-") {
+                        slot1.setText(userWord + "    " + userWord.length());
+
+                    }
+                    else if (slot2.getText() == "") {
+                        slot2.setText(userWord + "    " + userWord.length());
+                    }
+                    else if (slot3.getText() == "") {
+                        slot3.setText(userWord + "    " + userWord.length());
+                    }
+                    else if (slot4.getText() == "") {
+                        slot4.setText(userWord + "    " + userWord.length());
+                    }
+                    else if (slot5.getText() == "") {
+                        slot5.setText(userWord + "    " + userWord.length());
                     }
                 }
                 else if(realWord) {
                     error.setText("You found a word of " + userWord.length() + " long! Adding " + userWord.length() + " points to your score!");
+                    you.addWord(userWord);
                     //stub add userWord.length() points to playerscore
-                    for(int j = 0; j < answerSlot.size(); j ++) {
-                        if (answerSlot.get(j).getText() == "") {
-                            answerSlot.get(j).setText(userWord + "    " + userWord.length());
-                            j = answerSlot.size();
+                        if (slot1.getText().contains("-")) {
+                            slot1.setText(userWord + "    " + userWord.length());
+
                         }
-                    }
+                        else if (slot2.getText().contains("-")) {
+                            slot2.setText(userWord + "    " + userWord.length());
+                        }
+                        else if (slot3.getText().contains("-")) {
+                            slot3.setText(userWord + "    " + userWord.length());
+                        }
+                        else if (slot4.getText().contains("-")) {
+                            slot4.setText(userWord + "    " + userWord.length());
+                        }
+                        else if (slot5.getText().contains("-")) {
+                            slot5.setText(userWord + "    " + userWord.length());
+                        }
+
                 }
                 else {
                     error.setText("That was not a realword, wa waah. No points.");
@@ -1306,6 +1370,17 @@ public class Game extends JFrame {
         g.add(letCurrent);
 
 
+        JButton submitFinal=new JButton("SUBMIT FINAL ANSWER");
+        submitFinal.setBounds(90, 460, 200, 40);
+        submitFinal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                int score = you.scoreWordRound();
+                int timeNow = timer.returnTime();
+                scoreRoundFrame(you, score, you.getCurrentScore(),1, you.chooseFinal(), timeNow );
+            }
+        });
+
 
         JButton exit=new JButton("EXIT");
         exit.setBounds(90, 510, 200, 40);
@@ -1317,6 +1392,7 @@ public class Game extends JFrame {
         });
 
         g.add(error);
+        g.add(submitFinal);
         g.add(exit);
 
 
@@ -1365,6 +1441,8 @@ public class Game extends JFrame {
         scoreTotal.setBounds(10, 200, 400, 30);
         scoreTotal.setFont(fontM);
 
+
+
         JButton next = new JButton("Letter Round ->");
         next.setBounds(10, 250, 370, 30);
         next.addActionListener(new ActionListener() {
@@ -1375,6 +1453,20 @@ public class Game extends JFrame {
             }
         });
         next.setFont(fontM);
+
+
+
+
+        JButton nextNum = new JButton("Number Round ->");
+        nextNum.setBounds(10, 250, 370, 30);
+        nextNum.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                scoreRound.setVisible(false);
+                runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
+            }
+        });
+        nextNum.setFont(fontM);
 
         JButton exit = new JButton("Exit");
         exit.setBounds(100, 300, 200, 30);
@@ -1390,7 +1482,13 @@ public class Game extends JFrame {
         scoreRound.add(answer1);
         scoreRound.add(score1);
         scoreRound.add(scoreTotal);
-        scoreRound.add(next);
+        if(numOrLetter == 0) {
+            scoreRound.add(next);
+        }
+        else if(numOrLetter == 1) {
+            scoreRound.add(nextNum);
+        }
+
         scoreRound.add(exit);
 
         scoreRound.setSize(400,600);
@@ -1401,22 +1499,22 @@ public class Game extends JFrame {
 
 
 
-    public static Boolean checkword(String word) {
-        File wordFile = new File("src/countdown/Oxford_full");
-        Scanner wordScanner = null;
-        try {
+    public static Boolean checkword(String word) throws FileNotFoundException {
+        File wordFile = new File("C:\\Users\\dunca\\IdeaProjects\\countdown2\\src\\countdown\\Oxford_full");
+        //Scanner wordScanner = null;
+        Scanner wordScanner = new Scanner(wordFile);
+        /*try {
             wordScanner = new Scanner(wordFile);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-        while(wordScanner.hasNextLine()) {
+        }*/
+        while (wordScanner.hasNextLine()) {
             String firstWord = wordScanner.next();
             firstWord = firstWord.toLowerCase();
-            if(firstWord.equals(word)) {
+            if (firstWord.equals(word)) {
                 return true;
-            }
-            else {
+            } else {
                 wordScanner.nextLine();
             }
         }
