@@ -1,11 +1,11 @@
 package countdown;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
     private int currentScore;
-    private List<String> possibleWords;
-    private Integer finalNum;
+    private List<String> possibleWords = new ArrayList<>();
 
     private String finalWord;
 
@@ -47,6 +47,49 @@ public class Player {
         else {
             return false;
         }
+    }
+
+    public int scoreWordRound() {
+        int wordScore = 0;
+        int place = 0;
+        for (int i = 0; i < possibleWords.size(); i++) {
+            if (possibleWords.get(i).length() > wordScore) {
+                wordScore = possibleWords.get(i).length();
+                place = i;
+            }
+        }
+        finalWord  = possibleWords.get(place);
+        currentScore = currentScore + wordScore;
+        return wordScore;
+    }
+
+    public int scoreNumRound(Integer finalNumAnswer, Integer expectedNum) {
+        int roundScore = 0;
+        int diff = Math.abs(expectedNum - finalNumAnswer);
+        if(finalAnswer(expectedNum, finalNumAnswer)) {
+            roundScore = 10;
+
+        }
+        else if ((diff <= 5)) {
+            roundScore = 8;
+        }
+        else if (diff <= 10) {
+            roundScore = 5;
+        }
+        else if(diff <= 50) {
+            roundScore = 2;
+        }
+        else {
+            roundScore = 0;
+        }
+
+        currentScore = currentScore + roundScore;
+        return roundScore;
+
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
     }
 
     public void addWord(String wordToAdd) {

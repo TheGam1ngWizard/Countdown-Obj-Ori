@@ -1,33 +1,60 @@
 package countdown;
 
-import java.util.Scanner;
+import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Time{
-    private static int interval;
+public class Time extends JFrame {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6546379787738652515L;
+	private static int interval;
     private static Timer timer;
+    private static JFrame timerFrame = new JFrame();
+    public static JLabel timePanel = new JLabel("30");
+
 
     public void runTimer(int setInterval){
-        Scanner sc = new Scanner(System.in);
-        int delay = 5000;
+
+        timerFrame.setSize(100, 100);
+        timerFrame.setLocation(600, 100);
+
+
+        timePanel.setBounds(10, 10, 50, 50);
+        timerFrame.add(timePanel);
+        timerFrame.setLayout(null);
+        timerFrame.setVisible(true);
+
+        int delay = 2000;
         int period = 1000;
         timer = new Timer();
         interval = setInterval;
 
-        System.out.print(interval + " ");
+        //System.out.print(interval + " ");
         timer.scheduleAtFixedRate(new TimerTask() {
 
             public void run() {
-                System.out.print(setInterval() + " ");
+                timePanel.setText(setInterval() + "");
 
             }
         }, delay, period);
+
     }
 
     private static final int setInterval() {
         if (interval == 1)
             timer.cancel();
         return --interval;
+    }
+
+    public int returnTime() {
+        return (Integer.parseInt(timePanel.getText()));
+    }
+
+    public void stopTimer() {
+        timePanel.setText("30");
+        timer.cancel();
+        timerFrame.setVisible(false);
     }
 }
