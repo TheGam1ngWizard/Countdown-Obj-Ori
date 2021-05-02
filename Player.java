@@ -6,7 +6,6 @@ import java.util.List;
 public class Player {
     private int currentScore;
     private List<String> possibleWords = new ArrayList<>();
-    private Integer finalNum;
 
     private String finalWord;
 

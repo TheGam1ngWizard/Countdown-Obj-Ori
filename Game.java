@@ -1,10 +1,8 @@
 package countdown;
 import javax.swing.*;
-import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -12,7 +10,11 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game extends JFrame {
-    static NumberBag numberBag = new NumberBag();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8100550806146735517L;
+	static NumberBag numberBag = new NumberBag();
     static NumberBag numberBag2 = new NumberBag();
     static LetterBag letterBag = new LetterBag();
     static LetterBag letterBag2 = new LetterBag();
@@ -79,24 +81,6 @@ public class Game extends JFrame {
         f.setLayout(null);
         f.setVisible(true);
         f.setLocation(500, 200);
-
-
-       /* System.out.println("Would you like to play a game? (Press 'n' for NUMBER ROUND and 'l' for LETTER ROUND)");
-        Scanner in = new Scanner(System.in);
-        for (int j = 0; j < 1; j ++) {
-        	char userChoice = in.next().charAt(0);
-            if (userChoice == 'n') {
-            	runNumberRound(you, numberBoard, numberBag2, numberBag, delay, period, interval);
-            } else if (userChoice == 'l') {
-            	runLetterRound(you, letterBoard, letterBag2, letterBag, delay, period, interval);
-            } else {
-                System.out.println("That is not a choice. Please choose 'n' or 'l' for NUMBER or LETTER round.");
-            j--;
-            }
-        }
-        in.close();
-*/
-
 
     }
 
@@ -196,82 +180,9 @@ public class Game extends JFrame {
         f.setVisible(true);
         f.setLocation(500, 200);
 
-
-/*
-
-        Scanner in = new Scanner(System.in);
-        for (int j = 0; j < 6; j ++) {
-            System.out.println("Would you like a SMALL number or a BIG number? (Press 's' for SMALL and 'b' for BIG)");
-            char userChoice = in.next().charAt(0);
-            if (userChoice == 's') {
-                numBoard.add(small.drawNumber("small"));
-            } else if (userChoice == 'b') {
-                numBoard.add(big.drawNumber("big"));
-            } else {
-                System.out.println("That is not a choice. Please choose 's' or 'b' for SMALL or BIG.");
-                j--;
-            }
-
-        }
-
-
-
-        System.out.println("Your numbers are: " + numBoard.toString());
-        int goalNum = ThreadLocalRandom.current().nextInt(101, 999);
-        System.out.println("Your goal number is : " + goalNum);
-        System.out.println("You have 30 seconds to use your chosen numbers to reach the goal number. The time starts...NOW!");
-        //Time timer = new Time();
-        //timer.runTimer(30);
-            List<Integer> pastResults = new ArrayList<Integer>();
-            Integer resultOfOp = 0;
-            while (resultOfOp != goalNum) {
-                try {
-                    Integer num = in.nextInt();
-                    String operation = in.next();
-                    Integer num2 = in.nextInt();
-
-
-                if (you.isValid(numBoard, num, pastResults) == false || you.isValid(numBoard, num2, pastResults) == false) {
-                    System.out.println("That is not a valid number, please try again.");
-                } else {
-                    switch (operation) {
-                        case "+":
-                            resultOfOp = num + num2;
-                            pastResults.add(resultOfOp);
-                            System.out.println("Answer: " + resultOfOp);
-                            break;
-
-                        case "-":
-                            resultOfOp = num - num2;
-                            pastResults.add(resultOfOp);
-                            System.out.println("Answer: " + resultOfOp);
-                            break;
-                        case "/":
-                            resultOfOp = num / num2;
-                            pastResults.add(resultOfOp);
-                            System.out.println("Answer: " + resultOfOp);
-                            break;
-                        case "*":
-                            resultOfOp = num * num2;
-                            pastResults.add(resultOfOp);
-                            System.out.println("Answer: " + resultOfOp);
-                            break;
-                    }
-
-                }
-                }
-                catch(Exception e){
-                    System.out.println("Error! Input an integer, operation (+ - * /), then integer");
-                    in.reset();
-                    in.next();
-                }
-            }
-        in.close();
-*/
     }
 
     public static void startRoundNum(List<Integer> numboard1, String numbers, Player you) {
-        List<Integer> resetNums = numboard1;
         List<Integer> numBoard = numboard1;
         JFrame g = new JFrame();
         JLabel label = new JLabel("Welcome to the Number Round!");
@@ -324,7 +235,6 @@ public class Game extends JFrame {
 
         //final List<Integer>[] numberBoardWorking = new List[]{new ArrayList<Integer>()};
         //numberBoardWorking[0].addAll(numBoard);
-        int[] currentNums = new int[2];
         final String[] operations = {""};
         final int[] firstNum = {0};
         final int[] secondNum = {0};
@@ -431,7 +341,6 @@ public class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent arg0) {
 
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -463,7 +372,6 @@ public class Game extends JFrame {
         number2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -495,7 +403,6 @@ public class Game extends JFrame {
         number3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -527,7 +434,6 @@ public class Game extends JFrame {
         number4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -561,7 +467,6 @@ public class Game extends JFrame {
         number5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -594,7 +499,6 @@ public class Game extends JFrame {
         number6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -629,7 +533,6 @@ public class Game extends JFrame {
         answer1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -664,7 +567,6 @@ public class Game extends JFrame {
         answer2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -700,7 +602,6 @@ public class Game extends JFrame {
         answer3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -736,7 +637,6 @@ public class Game extends JFrame {
         answer4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                String currentNums = numCurrent.getText();
                 error.setText("");
                 if (operations[0] == "" && firstNum[0] != 0) {
                     error.setText("Invalid. Please choose an operation.");
@@ -1048,30 +948,6 @@ public class Game extends JFrame {
 
 
     public static void runLetterRound(Player you, List<Character> letterBoard, LetterBag cons, LetterBag vowel, int delay, int period, int interval) {
-       /* Scanner in = new Scanner(System.in);
-        for (int j = 0; j < 9; j ++) {
-            System.out.println("Would you like a Constant or a Vowel? (Press 'c' for CONSTANANT and 'v' for VOWEL)");
-            char userChoice = in.next().charAt(0);
-            if (userChoice == 'c') {
-                letterBoard.add(cons.drawLetter("const"));
-            } else if (userChoice == 'v') {
-                letterBoard.add(vowel.drawLetter("vowel"));
-            } else {
-                System.out.println("That is not a choice. Please choose 'c' or 'v' for CONSTANANT or VOWEL.");
-                j--;
-            }
-
-        }
-
-
-        System.out.println("Your letters are: " + letterBoard.toString());
-        System.out.println("You have 30 seconds to use your chosen letters to make the longest word. The time starts...NOW!");
-
-        in.close();
-*/
-
-
-
 
         JFrame f = new JFrame();
 
@@ -1171,14 +1047,11 @@ public class Game extends JFrame {
 
 
     public static void startRoundWord(List<Character> letterboard1, String letters, Player you) {
-        List<Character> resetLetters = letterboard1;
         List<Character> letterBoard = letterboard1;
         JFrame g = new JFrame();
         JLabel label = new JLabel("Welcome to the Letter Round!");
         label.setBounds(100, 50, 350, 30);
-
         g.add(label);
-        int goalNum = ThreadLocalRandom.current().nextInt(101, 999);
         JLabel directions = new JLabel("You have 30 seconds to try to find the longest word from the letters.");
         directions.setBounds(25, 80, 350, 20);
 
@@ -1420,7 +1293,6 @@ public class Game extends JFrame {
         timer.stopTimer();
         Font fontB = new Font("Comic Sans", Font.BOLD, 20);
         Font fontM = new Font("Comic Sans", Font.BOLD, 15);
-        Font fontS = new Font("Comic Sans", Font.BOLD, 10);
         JFrame scoreRound = new JFrame();
         JLabel title = new JLabel("Round Score");
         title.setBounds(130, 50, 400, 30);
@@ -1536,11 +1408,13 @@ public class Game extends JFrame {
             String firstWord = wordScanner.next();
             firstWord = firstWord.toLowerCase();
             if (firstWord.equals(word)) {
+            	wordScanner.close();
                 return true;
             } else {
                 wordScanner.nextLine();
             }
         }
+        wordScanner.close();
         return false;
     }
 

@@ -1,12 +1,15 @@
 package countdown;
 
 import javax.swing.*;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Time extends JFrame {
-    private static int interval;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6546379787738652515L;
+	private static int interval;
     private static Timer timer;
     private static JFrame timerFrame = new JFrame();
     public static JLabel timePanel = new JLabel("30");
@@ -23,7 +26,6 @@ public class Time extends JFrame {
         timerFrame.setLayout(null);
         timerFrame.setVisible(true);
 
-        Scanner sc = new Scanner(System.in);
         int delay = 2000;
         int period = 1000;
         timer = new Timer();
