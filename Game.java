@@ -17,6 +17,9 @@ public class Game extends JFrame {
     static LetterBag letterBag = new LetterBag();
     static LetterBag letterBag2 = new LetterBag();
 
+    static int countN = 1;
+    static int countL = 1;
+
 
     static List<Integer> numberBoard = new ArrayList<Integer>();
     static List<Character> letterBoard = new ArrayList<Character>();
@@ -106,6 +109,8 @@ public class Game extends JFrame {
 
         f.add(label);
 
+
+
         JLabel directions = new JLabel("Choose small numbers or big" + "\n" +
                 "numbers to get started.");
         directions.setBounds(50, 80, 350, 20);
@@ -128,6 +133,7 @@ public class Game extends JFrame {
 
         JButton b=new JButton("SMALL NUMBER");
         b.setBounds(25,160,150, 50);
+        numBoard.removeAll(numBoard);
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -1093,6 +1099,7 @@ public class Game extends JFrame {
         f.add(num1);
 
 
+        letterBoard.removeAll(letterBoard);
         JButton b=new JButton("Consonant");
         b.setBounds(25,160,150, 50);
         b.addActionListener(new ActionListener() {
@@ -1449,6 +1456,7 @@ public class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 scoreRound.setVisible(false);
+                countL = countL + 1;
                 runLetterRound(you, letterBoard, letterBag2, letterBag, delay, period, interval);
             }
         });
@@ -1459,14 +1467,23 @@ public class Game extends JFrame {
 
         JButton nextNum = new JButton("Number Round ->");
         nextNum.setBounds(10, 250, 370, 30);
+        NumberBag finalNumberBag = numberBag2;
+        NumberBag finalNumberBag1 = numberBag;
         nextNum.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                numberBag = Weighting.addNumberWeights("big");
+                numberBag2 = Weighting.addNumberWeights("small");
+                countN = countN + 1;
                 scoreRound.setVisible(false);
-                runNumberRound(you, numberBoard, numberBag, numberBag2, delay, period, interval);
+                runNumberRound(you, numberBoard, finalNumberBag, finalNumberBag1, delay, period, interval);
             }
         });
         nextNum.setFont(fontM);
+
+        JLabel thank = new JLabel("Thank you for playing Countdown!");
+        thank.setFont(fontB);
+        thank.setBounds(5, 250, 380, 30);
 
         JButton exit = new JButton("Exit");
         exit.setBounds(100, 300, 200, 30);
@@ -1482,12 +1499,18 @@ public class Game extends JFrame {
         scoreRound.add(answer1);
         scoreRound.add(score1);
         scoreRound.add(scoreTotal);
-        if(numOrLetter == 0) {
-            scoreRound.add(next);
+        if (countL <= 2) {
+            if(numOrLetter == 0) {
+                scoreRound.add(next);
+            }
+            else if(numOrLetter == 1) {
+                scoreRound.add(nextNum);
+            }
         }
-        else if(numOrLetter == 1) {
-            scoreRound.add(nextNum);
+        else {
+            scoreRound.add(thank);
         }
+
 
         scoreRound.add(exit);
 
