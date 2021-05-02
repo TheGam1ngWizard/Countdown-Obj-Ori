@@ -1382,6 +1382,8 @@ public class Game extends JFrame {
         submitFinal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+
+                g.setVisible(false);
                 int score = you.scoreWordRound();
                 int timeNow = timer.returnTime();
                 scoreRoundFrame(you, score, you.getCurrentScore(),1, you.chooseFinal(), timeNow );
