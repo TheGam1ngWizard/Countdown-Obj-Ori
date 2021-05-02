@@ -1523,7 +1523,7 @@ public class Game extends JFrame {
 
 
     public static Boolean checkword(String word) throws FileNotFoundException {
-        File wordFile = new File("C:\\Users\\dunca\\IdeaProjects\\countdown2\\src\\countdown\\Oxford_full");
+        File wordFile = new File("src/countdown/Oxford_full");
         //Scanner wordScanner = null;
         Scanner wordScanner = new Scanner(wordFile);
         /*try {
