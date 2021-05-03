@@ -45,7 +45,7 @@ public class Game extends JFrame {
 
         JFrame f = new JFrame();
         JButton b=new JButton("START GAME");
-        b.setBounds(100,100,200, 50);
+        b.setBounds(90,190,200, 50);
         NumberBag finalNumberBag = numberBag2;
         NumberBag finalNumberBag1 = numberBag;
         b.addActionListener(new ActionListener() {
@@ -65,7 +65,7 @@ public class Game extends JFrame {
 
 
         JButton exit=new JButton("EXIT");
-        exit.setBounds(100, 160, 200, 50);
+        exit.setBounds(90, 250, 200, 50);
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -74,6 +74,23 @@ public class Game extends JFrame {
         });
 
         f.add(exit);
+
+        Font small = new Font("Comic Sans", Font.ITALIC, 10);
+
+        JLabel credit = new JLabel("By Source, Fair use, https://en.wikipedia.org/w/index.php?curid=34329955");
+        credit.setBounds(5, 400, 400, 50);
+        credit.setFont(small);
+        credit.setVisible(true);
+
+        ImageIcon cover = new ImageIcon(Game.class.getResource("Countdown.png"));
+
+        JLabel image = new JLabel();
+        image.setBounds(40, 0, 300, 180);
+        image.setIcon(cover);
+
+        f.add(image);
+        f.add(credit);
+
 
 
 
@@ -207,7 +224,7 @@ public class Game extends JFrame {
 
         timerLabel.setBounds(300, 10, 20, 20);
 
-        g.add(timerLabel);
+       // g.add(timerLabel);
 
         Font font = new Font("Comic Sans", Font.BOLD, 20);
 
