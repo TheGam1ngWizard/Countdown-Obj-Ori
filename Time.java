@@ -12,19 +12,20 @@ public class Time extends JFrame {
 	private static int interval;
     private static Timer timer;
     private static JFrame timerFrame = new JFrame();
-    public static JLabel timePanel = new JLabel("30");
+    //public static JLabel timePanel = new JLabel("30");
 
 
-    public void runTimer(int setInterval){
 
-        timerFrame.setSize(100, 100);
-        timerFrame.setLocation(600, 100);
+    public void runTimer(int setInterval, JLabel timePanel){
+
+       // timerFrame.setSize(400, 80);
+        //timerFrame.setLocation(500, 200);
 
 
-        timePanel.setBounds(10, 10, 50, 50);
-        timerFrame.add(timePanel);
-        timerFrame.setLayout(null);
-        timerFrame.setVisible(true);
+       // timePanel.setBounds(185, 5, 50, 50);
+        //timerFrame.add(timePanel);
+        //timerFrame.setLayout(null);
+        //timerFrame.setVisible(true);
 
         int delay = 2000;
         int period = 1000;
@@ -48,13 +49,14 @@ public class Time extends JFrame {
         return --interval;
     }
 
-    public int returnTime() {
-        return (Integer.parseInt(timePanel.getText()));
-    }
+    //public int returnTime() {
+      //  return (Integer.parseInt(timePanel.getText()));
+    //}
 
     public void stopTimer() {
-        timePanel.setText("30");
+        //timePanel.setText("30");
         timer.cancel();
+
         timerFrame.setVisible(false);
     }
 }

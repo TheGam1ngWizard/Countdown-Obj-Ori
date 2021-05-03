@@ -336,7 +336,7 @@ public class Game extends JFrame {
         g.add(divide);
 
         JButton number1=new JButton(String.valueOf(numBoard.get(0)));
-        number1.setBounds(30,260,50, 50);
+        number1.setBounds(25,260,55, 50);
         number1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -368,7 +368,7 @@ public class Game extends JFrame {
             }
         });
         JButton number2=new JButton(String.valueOf(numBoard.get(1)));
-        number2.setBounds(85,260,50, 50);
+        number2.setBounds(80,260,55, 50);
         number2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -399,7 +399,7 @@ public class Game extends JFrame {
             }
         });
         JButton number3=new JButton(String.valueOf(numBoard.get(2)));
-        number3.setBounds(140,260,50, 50);
+        number3.setBounds(135,260,55, 50);
         number3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -430,7 +430,7 @@ public class Game extends JFrame {
             }
         });
         JButton number4=new JButton(String.valueOf(numBoard.get(3)));
-        number4.setBounds(195,260,50, 50);
+        number4.setBounds(190,260,55, 50);
         number4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -463,7 +463,7 @@ public class Game extends JFrame {
             }
         });
         JButton number5=new JButton(String.valueOf(numBoard.get(4)));
-        number5.setBounds(250,260,50, 50);
+        number5.setBounds(245,260,55, 50);
         number5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -495,7 +495,7 @@ public class Game extends JFrame {
         });
         String num6 = numBoard.get(5).toString();
         JButton number6=new JButton(num6);
-        number6.setBounds(305,260,50, 50);
+        number6.setBounds(300,260,55, 50);
         number6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -858,6 +858,14 @@ public class Game extends JFrame {
             }
         });
 
+        Font fontTime = new Font("Comic Sans", Font.BOLD, 20);
+        JLabel timePanel = new JLabel("30");
+        timePanel.setFont(fontTime);
+        timePanel.setBounds(185, 5, 50, 50);
+
+        g.add(timePanel);
+
+        timer.runTimer(30, timePanel);
 
         JButton finalAnswer=new JButton("FINAL ANSWER");
         finalAnswer.setBounds(90, 460, 200, 40);
@@ -874,7 +882,8 @@ public class Game extends JFrame {
                 yes.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
-                        int timeNow = timer.returnTime();
+                       // int timeNow = timer.returnTime();
+                        int timeNow = Integer.parseInt(timePanel.getText());
                         sure.setVisible(false);
                         g.setVisible(false);
                         String newString = numCurrent.getText().substring(numCurrent.getText().lastIndexOf(" ") + 1);
@@ -942,7 +951,6 @@ public class Game extends JFrame {
         g.setLocation(500, 200);
 
 
-        timer.runTimer(30);
 
     }
 
@@ -1068,7 +1076,7 @@ public class Game extends JFrame {
 
         timerLabel.setBounds(300, 10, 20, 20);
 
-        g.add(timerLabel);
+        //g.add(timerLabel);
 
         Font font = new Font("Comic Sans", Font.BOLD, 20);
 
@@ -1082,13 +1090,13 @@ public class Game extends JFrame {
         let1.setText(letters);
 
         JLabel enterHere = new JLabel("Type: ");
-        enterHere.setBounds(2, 150, 60, 30);
+        enterHere.setBounds(5, 150, 60, 30);
         enterHere.setFont(font);
 
         g.add(enterHere);
 
         JTextArea letCurrent = new JTextArea("");
-        letCurrent.setBounds(80, 150, 170, 30);
+        letCurrent.setBounds(80, 150, 225, 30);
         Color color = g.getBackground();
         letCurrent.setBackground(Color.WHITE);
         letCurrent.setForeground(Color.BLUE);
@@ -1109,43 +1117,43 @@ public class Game extends JFrame {
         Font it = new Font("Comic Sans", Font.ITALIC, 20);
         JTextArea slot1 = new JTextArea("-");
         //answerSlot.add(slot1);
-        slot1.setBounds(10, 205, 200, 30);
+        slot1.setBounds(80, 205, 225, 30);
         slot1.setFont(it);
         slot1.setForeground(Color.GRAY);
-        slot1.setBackground(Color.lightGray);
+        //slot1.setBackground(Color.lightGray);
         slot1.setVisible(true);
         //slot1.setText("-");
 
         JTextArea slot2 = new JTextArea();
        // answerSlot.add(slot2);
-        slot2.setBounds(10, 250, 200, 30);
+        slot2.setBounds(80, 250, 225, 30);
         slot2.setFont(it);
         slot2.setForeground(Color.GRAY);
-        slot2.setBackground(Color.lightGray);
+        //slot2.setBackground(Color.lightGray);
         slot2.setVisible(true);
         slot2.setText("-");
         JTextArea slot3 = new JTextArea();
         //answerSlot.add(slot3);
-        slot3.setBounds(10, 295, 200, 30);
+        slot3.setBounds(80, 295, 225, 30);
         slot3.setFont(it);
         slot3.setForeground(Color.GRAY);
-        slot3.setBackground(Color.lightGray);
+        //slot3.setBackground(Color.lightGray);
         slot3.setVisible(true);
         slot3.setText("-");
         JTextArea slot4 = new JTextArea();
         //answerSlot.add(slot4);
-        slot4.setBounds(10, 340, 200, 30);
+        slot4.setBounds(80, 340, 225, 30);
         slot4.setFont(it);
         slot4.setForeground(Color.GRAY);
-        slot4.setBackground(Color.lightGray);
+        //slot4.setBackground(Color.lightGray);
         slot4.setVisible(true);
         slot4.setText("-");
         JTextArea slot5 = new JTextArea();
         //answerSlot.add(slot5);
-        slot5.setBounds(10, 385, 200, 30);
+        slot5.setBounds(80, 385, 225, 30);
         slot5.setFont(it);
         slot5.setForeground(Color.GRAY);
-        slot5.setBackground(Color.lightGray);
+        //slot5.setBackground(Color.lightGray);
         slot5.setVisible(true);
         slot5.setText("-");
 
@@ -1195,16 +1203,16 @@ public class Game extends JFrame {
                         slot1.setText(userWord + "    " + userWord.length());
 
                     }
-                    else if (slot2.getText() == "") {
+                    else if (slot2.getText() == "-") {
                         slot2.setText(userWord + "    " + userWord.length());
                     }
-                    else if (slot3.getText() == "") {
+                    else if (slot3.getText() == "-") {
                         slot3.setText(userWord + "    " + userWord.length());
                     }
-                    else if (slot4.getText() == "") {
+                    else if (slot4.getText() == "-") {
                         slot4.setText(userWord + "    " + userWord.length());
                     }
-                    else if (slot5.getText() == "") {
+                    else if (slot5.getText() == "-") {
                         slot5.setText(userWord + "    " + userWord.length());
                     }
                 }
@@ -1240,7 +1248,12 @@ public class Game extends JFrame {
             }
         });
 
-
+        Font fontTime = new Font("Comic Sans", Font.BOLD, 20);
+        JLabel timePanel = new JLabel("30");
+        timePanel.setFont(fontTime);
+        timePanel.setBounds(185, 5, 50, 50);
+        g.add(timePanel);
+        timer.runTimer(30, timePanel);
 
 
         let1.setForeground(Color.white);
@@ -1255,11 +1268,21 @@ public class Game extends JFrame {
         submitFinal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-
-                g.setVisible(false);
-                int score = you.scoreWordRound();
-                int timeNow = timer.returnTime();
-                scoreRoundFrame(you, score, you.getCurrentScore(),1, you.chooseFinal(), timeNow );
+                if (slot1.getText().contains("-")) {
+                    error.setText("You did not submit a word. Please try again.");
+                }
+                else {
+                    g.setVisible(false);
+                    int timeNow = Integer.parseInt(timePanel.getText());
+                    int score = 0;
+                    if (timeNow > 0 ) {
+                        score = you.scoreWordRound(true);
+                    }
+                    else {
+                        score = you.scoreWordRound(false);
+                    }
+                    scoreRoundFrame(you, score, you.getCurrentScore(), 1, you.chooseFinal(), timeNow);
+                }
             }
         });
 
@@ -1284,7 +1307,7 @@ public class Game extends JFrame {
         g.setLocation(500, 200);
 
 
-        timer.runTimer(30);
+
     }
 
 
@@ -1311,6 +1334,8 @@ public class Game extends JFrame {
         }
         else if (timeNow > 0 ) {
             answer1.setText(answer1.getText() + " (30 second bonus)");
+            //roundScore = roundScore + 5;
+
         }
 
         JLabel score1 = new JLabel("Your score for that round is: " + roundScore);
@@ -1369,6 +1394,12 @@ public class Game extends JFrame {
         });
         exit.setFont(fontM);
 
+        JLabel credits = new JLabel("Game developed by Ariel Grad & Rylee Szok.");
+        credits.setBounds(5, 400, 390, 30);
+        JLabel credits2 = new JLabel("Created after the original Countdown gameshow.");
+        credits2.setBounds(5, 435, 390, 30);
+        credits.setFont(fontM);
+        credits2.setFont(fontM);
         scoreRound.add(title);
         scoreRound.add(answer1);
         scoreRound.add(score1);
@@ -1383,6 +1414,8 @@ public class Game extends JFrame {
         }
         else {
             scoreRound.add(thank);
+            scoreRound.add(credits);
+            scoreRound.add(credits2);
         }
 
 

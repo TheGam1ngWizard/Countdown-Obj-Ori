@@ -49,7 +49,7 @@ public class Player {
         }
     }
 
-    public int scoreWordRound() {
+    public int scoreWordRound(boolean timeBonus) {
         int wordScore = 0;
         int place = 0;
         for (int i = 0; i < possibleWords.size(); i++) {
@@ -57,6 +57,9 @@ public class Player {
                 wordScore = possibleWords.get(i).length();
                 place = i;
             }
+        }
+        if (timeBonus == true) {
+            wordScore = wordScore + 5;
         }
         finalWord  = possibleWords.get(place);
         currentScore = currentScore + wordScore;
